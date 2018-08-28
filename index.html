@@ -11,6 +11,7 @@
   <link href="gwdpagedeck_style.css" rel="stylesheet" data-version="11" data-exports-type="gwd-pagedeck">
   <link href="gwdgooglead_style.css" rel="stylesheet" data-version="1" data-exports-type="gwd-google-ad">
   <link href="gwdimage_style.css" rel="stylesheet" data-version="12" data-exports-type="gwd-image">
+  <link href="gwdtaparea_style.css" rel="stylesheet" data-version="6" data-exports-type="gwd-taparea">
   <style type="text/css" id="gwd-lightbox-style">
     .gwd-lightbox {
       overflow: hidden;
@@ -73,6 +74,14 @@
       background-image: none;
       background-color: rgb(86, 158, 53);
     }
+    .gwd-taparea-vf73 {
+      position: absolute;
+      left: 80px;
+      top: 180px;
+      width: 135px;
+      height: 36px;
+      transform-origin: 67.5px 18px 0px;
+    }
   </style>
   <script data-source="googbase_min.js" data-version="4" data-exports-type="googbase" src="googbase_min.js"></script>
   <script data-source="gwd_webcomponents_min.js" data-version="5" data-exports-type="gwd_webcomponents" src="gwd_webcomponents_min.js"></script>
@@ -81,19 +90,43 @@
   <script data-source="https://s0.2mdn.net/ads/studio/Enabler.js" data-exports-type="gwd-google-ad" src="https://s0.2mdn.net/ads/studio/Enabler.js"></script>
   <script data-source="gwdgooglead_min.js" data-version="1" data-exports-type="gwd-google-ad" src="gwdgooglead_min.js"></script>
   <script data-source="gwdimage_min.js" data-version="12" data-exports-type="gwd-image" src="gwdimage_min.js"></script>
+  <script data-source="gwdtaparea_min.js" data-version="6" data-exports-type="gwd-taparea" src="gwdtaparea_min.js"></script>
+  <script type="text/javascript" gwd-events="support" src="gwd-events-support.1.0.js"></script>
+  <script type="text/javascript" gwd-events="handlers">
+    gwd.auto_Gwd_taparea_1Click = function(event) {
+      // GWD Predefined Function
+      gwd.actions.gwdGoogleAd.exit('gwd-ad', 'cta', 'https://www.google.gr/', true, true, 'page1');
+    };
+  </script>
+  <script type="text/javascript" gwd-events="registration">
+    // Support code for event handling in Google Web Designer
+     // This script block is auto-generated. Please do not edit!
+    gwd.actions.events.registerEventHandlers = function(event) {
+      gwd.actions.events.addHandler('gwd-taparea_1', 'click', gwd.auto_Gwd_taparea_1Click, false);
+    };
+    gwd.actions.events.deregisterEventHandlers = function(event) {
+      gwd.actions.events.removeHandler('gwd-taparea_1', 'click', gwd.auto_Gwd_taparea_1Click, false);
+    };
+    document.addEventListener("DOMContentLoaded", gwd.actions.events.registerEventHandlers);
+    document.addEventListener("unload", gwd.actions.events.deregisterEventHandlers);
+  </script>
 </head>
 
 <body>
   <gwd-google-ad id="gwd-ad" polite-load="">
-    <gwd-metric-configuration></gwd-metric-configuration>
+    <gwd-metric-configuration>
+      <gwd-metric-event source="gwd-taparea_1" event="tapareaexit" metric="" exit="Exit"></gwd-metric-event>
+    </gwd-metric-configuration>
     <gwd-pagedeck class="gwd-page-container" id="pagedeck">
       <gwd-page id="page1" class="gwd-page-wrapper gwd-page-size gwd-lightbox" data-gwd-width="100%" data-gwd-height="100%">
         <div class="gwd-page-content gwd-page-size">
           <gwd-image id="gwd-image_1" source="assets/pappy.svg" scaling="stretch" class="gwd-image-kujs"></gwd-image>
           <div class="gwd-div-lf60"></div>
+          <gwd-taparea id="gwd-taparea_1" class="gwd-taparea-vf73"></gwd-taparea>
         </div>
       </gwd-page>
     </gwd-pagedeck>
+    <gwd-exit metric="cta" url="https://www.google.gr/"></gwd-exit>
   </gwd-google-ad>
   <script type="text/javascript" id="gwd-init-code">
     (function() {
